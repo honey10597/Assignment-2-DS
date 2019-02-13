@@ -11,6 +11,7 @@ public class link
 		head=l.insert(head,-7);
 		head=l.insert(head,1);
 		head=l.insert(head,3);
+		
 		head=l.solve(head);
 		l.display(head);
 	}
@@ -51,12 +52,14 @@ class List
 	public Node solve(Node head)
 	{
 		Node t1=head;
-		Node t2=head;
-		while(t1!=null)
+		Node t2=head.next;
+		while(t1.next!=null)
 		{
+			t2=t1.next;
 			while(t2!=null)
 			{
-				if(t1.data+t2.data == 0 || t1.data-t2.data == 0)
+				
+				if( (t1.data-t2.data) == 0 || (t1.data+t2.data) == 0 )
 				{
 					head=delete(head,t1.data);
 					head=delete(head,t2.data);
@@ -70,6 +73,7 @@ class List
 	
 	public Node delete(Node head,int d)
 	{
+			
 		Node temp=head;
 		if(head.data==d)
 		{
@@ -77,7 +81,7 @@ class List
 		}
 		else
 		{
-		while(temp.next!=null)
+		while(temp!=null)
 		{
 			if(temp.data == d)
 			{
